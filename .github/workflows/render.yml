@@ -3,11 +3,20 @@ name: render
 on:
   push:
     branches: [main]
+    # Include the generated views themselves, not just their inputs. A push that
+    # only touches README.md or reports/ (a hand edit, or a bot commit from an
+    # older version of this file) then still gets checked and healed instead of
+    # sitting on main unchecked.
+    #
+    # This cannot loop: pushes made with the default GITHUB_TOKEN do not start
+    # workflow runs, so the bot's own commit never re-enters this workflow.
     paths:
       - leaderboard.json
       - runs/**
       - scores/**
+      - reports/**
       - scripts/**
+      - README.md
   pull_request:
     paths:
       - leaderboard.json
