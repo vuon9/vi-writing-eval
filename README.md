@@ -57,10 +57,10 @@ python3 scripts/render.py
 
 2 model runs, judged blind against the 20-point rubric.
 
-| Rank | Model | Provider | Strict pass | Nuance | Latency | Cost | Judge | Badges |
-|:--:|:--|:--|:--:|:--:|--:|--:|:--|:--|
-| 1 | **deepseek-flash** | deepseek | 6/6 | 100.0% | 29.2s | $0.0074 | deepseek-v4-pro | `[Quality Crown]`, `[Speed Demon]` |
-| 2 | **deepseek-v4-pro** | deepseek | 5/6 | 95.0% | 137.2s | $0.0508 | deepseek-v4-pro | none |
+| Rank | Model | Provider | Strict pass | Nuance | Latency | Cost | Judge | Protocol | Badges |
+|:--:|:--|:--|:--:|:--:|--:|--:|:--|:--|:--|
+| 1 | **deepseek-flash** | deepseek | 6/6 | 100.0% | 29.2s | $0.0074 | deepseek-v4-pro | evidence-quoted-v1 | `[Quality Crown]`, `[Speed Demon]` |
+| 2 | **deepseek-v4-pro** | deepseek | 5/6 | 95.0% | 137.2s | $0.0508 | deepseek-v4-pro | evidence-quoted-v1 | none |
 
 ## Per-test result
 
@@ -80,5 +80,7 @@ python3 scripts/render.py
 - `[Quality Crown]` highest Nuance score on the board.
 - `[Free Champion]` zero cost and Nuance at or above 70%.
 - `[Speed Demon]` lowest latency among runs at or above 70% Nuance.
+
+Scores are only comparable between rows that share a judge and protocol.
 
 <!-- LEADERBOARD:END -->
