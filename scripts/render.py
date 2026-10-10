@@ -103,16 +103,18 @@ def summary_table(entries: list[dict]) -> str:
         reverse=True,
     )
     lines = [
-        "| Rank | Model | Provider | Strict pass | Nuance | Latency | Cost | Judge | Badges |",
-        "|:--:|:--|:--|:--:|:--:|--:|--:|:--|:--|",
+        "| Rank | Model | Provider | Strict pass | Nuance | Latency | Cost | Judge | Protocol | Badges |",
+        "|:--:|:--|:--|:--:|:--:|--:|--:|:--|:--|:--|",
     ]
     for i, e in enumerate(ranked, 1):
         judge = e.get("judge", {}).get("model", "n/a")
+        protocol = e.get("judge", {}).get("protocol", "n/a")
         badges = ", ".join(f"`[{b}]`" for b in e["badges"]) or "none"
         lines.append(
             f"| {i} | **{cell(e['model'])}** | {cell(e['provider'])} "
             f"| {e['strict_pass_count']}/{total_tests(e)} | {e['nuance_score']:.1f}% "
-            f"| {e['elapsed_seconds']:.1f}s | {fmt_money(e)} | {cell(judge)} | {badges} |"
+            f"| {e['elapsed_seconds']:.1f}s | {fmt_money(e)} | {cell(judge)} "
+            f"| {cell(protocol)} | {badges} |"
         )
     return "\n".join(lines)
 
@@ -191,6 +193,8 @@ def render(entries: list[dict]) -> str:
             f"{FREE_NUANCE_FLOOR:.0f}%.",
             "- `[Speed Demon]` lowest latency among runs at or above "
             f"{FREE_NUANCE_FLOOR:.0f}% Nuance.",
+            "",
+            "Scores are only comparable between rows that share a judge and protocol.",
             "",
             END,
         ]
