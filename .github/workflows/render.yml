@@ -1,0 +1,77 @@
+name: render
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - leaderboard.json
+      - runs/**
+      - scores/**
+      - scripts/**
+  pull_request:
+    paths:
+      - leaderboard.json
+      - runs/**
+      - scores/**
+      - scripts/**
+      - README.md
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: README is in sync
+    if: github.event_name == 'pull_request' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify generated tables match leaderboard.json
+        run: python3 scripts/render.py --check
+      - name: Verify every entry has raw run and score files
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, sys
+          entries = json.loads(pathlib.Path("leaderboard.json").read_text())["entries"]
+          bad = []
+          for e in entries:
+              for field in ("source_run", "source_scores"):
+                  p = pathlib.Path(e.get(field, ""))
+                  if not p.is_file():
+                      bad.append(f"{e.get('model')}: missing {field} -> {p}")
+              if not e.get("judge", {}).get("protocol"):
+                  bad.append(f"{e.get('model')}: no judge protocol recorded")
+          if bad:
+              print("\n".join(bad), file=sys.stderr)
+              sys.exit(1)
+          print(f"{len(entries)} entries verified, all with evidence files and a judge protocol")
+          PY
+
+  update:
+    name: Regenerate README
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Render tables from leaderboard.json
+        run: python3 scripts/render.py
+      - name: Commit README if it changed
+        run: |
+          if git diff --quiet -- README.md; then
+            echo "README.md already up to date"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "docs: render leaderboard tables"
+          git push

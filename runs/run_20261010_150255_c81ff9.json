@@ -1,0 +1,90 @@
+{
+  "run_id": "run_20261010_150255_c81ff9",
+  "timestamp": "2026-10-10T15:02:55.681413+00:00",
+  "suite": "canonical_suite",
+  "metadata": {
+    "model": "deepseek-flash",
+    "provider": "deepseek",
+    "temperature": 0.7,
+    "max_tokens": 8192,
+    "elapsed_seconds": 29.25,
+    "prompt_tokens": 691,
+    "completion_tokens": 6034,
+    "cost_usd": 0.007448,
+    "unusable_completions": 0
+  },
+  "outputs": [
+    {
+      "test_id": "test_1_poetry",
+      "title": "Test Khả năng Làm thơ (Linh hoạt + Kiểm soát định dạng)",
+      "prompt": "Hãy viết một bài thơ 4 câu (thể 7 chữ) về chủ đề 'cà phê sáng'.\nRàng buộc: Tất cả các từ trong câu thứ 4 đều phải bắt đầu bằng chữ cái T.",
+      "completion": "**Cà Phê Sáng**\n\nSớm mai thức dậy nắng vừa lên  \nPha cà phê ấm khói bồng bềnh  \nNhấp ngụm đắng nồng hồn lắng đọng  \nTừng thìa thơm thấm tận tim ta.",
+      "elapsed_seconds": 8.57,
+      "prompt_tokens": 95,
+      "completion_tokens": 1805,
+      "reasoning_tokens": 1724,
+      "finish_reason": "stop",
+      "truncated": false
+    },
+    {
+      "test_id": "test_2_prose",
+      "title": "Test Khả năng Viết văn (Tóm tắt + Giới hạn thông tin)",
+      "prompt": "Hãy viết một đoạn văn ngắn (tối đa 3 câu) miêu tả cảm giác của một người lần đầu đi máy bay.\nRàng buộc: Không được sử dụng các từ: máy bay, mây, bầu trời, sợ, thích.",
+      "completion": "Lần đầu được nâng lên khỏi mặt đất, tôi thấy tim đập nhanh và tay bám chặt thành ghế. Nhìn qua ô cửa nhỏ, những dải trắng xốp trôi lững lờ phía dưới khiến tôi choáng ngợp. Suốt chuyến đi, cảm giác lâng lâng lạ lẫm xen lẫn chút bồn chồn cứ theo tôi mãi.",
+      "elapsed_seconds": 4.23,
+      "prompt_tokens": 107,
+      "completion_tokens": 834,
+      "reasoning_tokens": 718,
+      "finish_reason": "stop",
+      "truncated": false
+    },
+    {
+      "test_id": "test_3_persona",
+      "title": "Test Khả năng Nhập vai / Hội thoại (Tuân thủ Persona & Quy tắc logic)",
+      "prompt": "Bạn là một nhân viên hỗ trợ khách hàng cực kỳ lịch sự nhưng chỉ được trả lời bằng tối đa 15 từ.\nKhách hàng hỏi: 'Tại sao đơn hàng của tôi chưa giao?'. Hãy viết câu phản hồi.",
+      "completion": "Xin lỗi, đơn có thể chậm do vận chuyển. Vui lòng cho mã đơn ạ.",
+      "elapsed_seconds": 2.38,
+      "prompt_tokens": 115,
+      "completion_tokens": 380,
+      "reasoning_tokens": 348,
+      "finish_reason": "stop",
+      "truncated": false
+    },
+    {
+      "test_id": "test_4_marketing",
+      "title": "Test Khả năng Sáng tạo Marketing (Copywriting + Cấu trúc định dạng)",
+      "prompt": "Hãy viết 1 đoạn quảng cáo ngắn (dưới 50 từ) giới thiệu dịch vụ giao cà phê tận nơi.\nRàng buộc: Phải viết theo cấu trúc AIDA (Attention - Interest - Desire - Action) và mỗi phần chỉ được gói gọn trong đúng 1 câu.",
+      "completion": "Chú ý: Cà phê nóng hổi đang chờ bạn!  \nQuan tâm: Giao tận nơi, giữ trọn hương vị đậm đà.  \nKhao khát: Chỉ vài phút, ly cà phê yêu thích đến ngay.  \nHành động: Đặt ngay để nhận ưu đãi giao miễn phí!",
+      "elapsed_seconds": 7.88,
+      "prompt_tokens": 120,
+      "completion_tokens": 1940,
+      "reasoning_tokens": 1839,
+      "finish_reason": "stop",
+      "truncated": false
+    },
+    {
+      "test_id": "test_5_email",
+      "title": "Test Khả năng Viết Email Công việc (Thần thái & Quy chuẩn giao tiếp)",
+      "prompt": "Hãy viết một email ngắn từ chối lời mời họp vào 15h chiều nay do trùng lịch.\nRàng buộc: Email gồm đúng 3 phần: Tiêu đề, Lời chào, và 2 câu nội dung (câu 1: lý do từ chối + xin lỗi; câu 2: đề xuất khung giờ mới).",
+      "completion": "Tiêu đề: Từ chối lời mời họp lúc 15h hôm nay\n\nChào anh/chị,\n\nTôi rất xin lỗi nhưng không thể tham dự cuộc họp lúc 15h chiều nay do trùng lịch.  \nAnh/chị có thể sắp xếp lại vào 10h sáng mai hoặc 14h chiều mai không?",
+      "elapsed_seconds": 3.04,
+      "prompt_tokens": 131,
+      "completion_tokens": 533,
+      "reasoning_tokens": 434,
+      "finish_reason": "stop",
+      "truncated": false
+    },
+    {
+      "test_id": "test_6_rewrite",
+      "title": "Test Khả năng Dịch thuật / Chuyển đổi văn phong (Rewrite / Tone & Style)",
+      "prompt": "Hãy chuyển câu sau đây sang văn phong trang trọng/hành chính: 'Cái ứng dụng này bị lỗi liên tục, làm ơn sửa nhanh lên giùm cái!'.\nRàng buộc: Câu phản hồi chỉ được dài đúng 1 câu và chứa từ 'hệ thống'.",
+      "completion": "Kính đề nghị đơn vị vận hành khẩn trương khắc phục tình trạng lỗi liên tục của hệ thống ứng dụng này.",
+      "elapsed_seconds": 3.15,
+      "prompt_tokens": 123,
+      "completion_tokens": 542,
+      "reasoning_tokens": 500,
+      "finish_reason": "stop",
+      "truncated": false
+    }
+  ]
+}

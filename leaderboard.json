@@ -1,0 +1,370 @@
+{
+  "entries": [
+    {
+      "run_id": "run_20261010_150255_c81ff9",
+      "model": "deepseek-flash",
+      "provider": "deepseek",
+      "timestamp": "2026-10-10T15:02:55.681413+00:00",
+      "strict_pass_count": 6,
+      "nuance_score": 100.0,
+      "elapsed_seconds": 29.25,
+      "cost_usd": 0.007448,
+      "prompt_tokens": 691,
+      "completion_tokens": 6034,
+      "reasoning_tokens": 5563,
+      "judge": {
+        "model": "deepseek-v4-pro",
+        "protocol": "evidence-quoted-v1"
+      },
+      "source_run": "runs/run_20261010_150255_c81ff9.json",
+      "source_scores": "scores/strict_scores_run_20261010_150255_c81ff9.json",
+      "test_scores": {
+        "test_1_poetry": {
+          "strict_pass": true,
+          "passed_checks": 4,
+          "total_checks": 4,
+          "checks": [
+            {
+              "item": "Đúng 4 câu thơ.",
+              "pass": true,
+              "evidence": "Sớm mai thức dậy nắng vừa lên\nPha cà phê ấm khói bồng bềnh\nNhấp ngụm đắng nồng hồn lắng đọng\nTừng thìa thơm thấm tận tim ta.",
+              "reason": "Four verse lines are present."
+            },
+            {
+              "item": "Mỗi câu thơ có đúng 7 chữ.",
+              "pass": true,
+              "evidence": "Sớm mai thức dậy nắng vừa lên\nPha cà phê ấm khói bồng bềnh\nNhấp ngụm đắng nồng hồn lắng đọng\nTừng thìa thơm thấm tận tim ta.",
+              "reason": "Each quoted line has exactly seven words."
+            },
+            {
+              "item": "Nội dung bám sát chủ đề 'cà phê sáng'.",
+              "pass": true,
+              "evidence": "Sớm mai thức dậy nắng vừa lên\nPha cà phê ấm khói bồng bềnh\nNhấp ngụm đắng nồng hồn lắng đọng",
+              "reason": "Morning, coffee brewing, and drinking are described."
+            },
+            {
+              "item": "100% số từ ở câu thứ 4 đều bắt đầu bằng chữ cái T.",
+              "pass": true,
+              "evidence": "Từng thìa thơm thấm tận tim ta.",
+              "reason": "Every word starts with T."
+            }
+          ]
+        },
+        "test_2_prose": {
+          "strict_pass": true,
+          "passed_checks": 3,
+          "total_checks": 3,
+          "checks": [
+            {
+              "item": "Tổng số câu trong đoạn văn <= 3 câu.",
+              "pass": true,
+              "evidence": "Lần đầu được nâng lên khỏi mặt đất, tôi thấy tim đập nhanh và tay bám chặt thành ghế. Nhìn qua ô cửa nhỏ, những dải trắng xốp trôi lững lờ phía dưới khiến tôi choáng ngợp. Suốt chuyến đi, cảm giác lâng lâng lạ lẫm xen lẫn chút bồn chồn cứ theo tôi mãi.",
+              "reason": "Full passage has exactly three sentences."
+            },
+            {
+              "item": "Không chứa bất kỳ từ nào trong danh sách bị cấm (máy bay, mây, bầu trời, sợ, thích).",
+              "pass": true,
+              "evidence": "Lần đầu được nâng lên khỏi mặt đất, tôi thấy tim đập nhanh và tay bám chặt thành ghế. Nhìn qua ô cửa nhỏ, những dải trắng xốp trôi lững lờ phía dưới khiến tôi choáng ngợp. Suốt chuyến đi, cảm giác lâng lâng lạ lẫm xen lẫn chút bồn chồn cứ theo tôi mãi.",
+              "reason": "Full text contains none of the forbidden words."
+            },
+            {
+              "item": "Diễn tả đúng cảm xúc và không gian của trải nghiệm bay.",
+              "pass": true,
+              "evidence": "Lần đầu được nâng lên khỏi mặt đất, tôi thấy tim đập nhanh và tay bám chặt thành ghế. Nhìn qua ô cửa nhỏ, những dải trắng xốp trôi lững lờ phía dưới khiến tôi choáng ngợp. Suốt chuyến đi, cảm giác lâng lâng lạ lẫm xen lẫn chút bồn chồn cứ theo tôi mãi.",
+              "reason": "Describes elevation, window view, and mixed flight sensations."
+            }
+          ]
+        },
+        "test_3_persona": {
+          "strict_pass": true,
+          "passed_checks": 3,
+          "total_checks": 3,
+          "checks": [
+            {
+              "item": "Tổng số từ <= 15 từ.",
+              "pass": true,
+              "evidence": "Xin lỗi, đơn có thể chậm do vận chuyển. Vui lòng cho mã đơn ạ.",
+              "reason": "Quoted reply is within the 15-word limit."
+            },
+            {
+              "item": "Đúng vai trò nhân viên hỗ trợ khách hàng (thái độ lịch sự, chuyên nghiệp).",
+              "pass": true,
+              "evidence": "Xin lỗi, đơn có thể chậm do vận chuyển. Vui lòng cho mã đơn ạ.",
+              "reason": "Apologizes and politely requests order code."
+            },
+            {
+              "item": "Trả lời đúng trọng tâm câu hỏi của khách hàng.",
+              "pass": true,
+              "evidence": "đơn có thể chậm do vận chuyển",
+              "reason": "Gives shipping delay as cause."
+            }
+          ]
+        },
+        "test_4_marketing": {
+          "strict_pass": true,
+          "passed_checks": 3,
+          "total_checks": 3,
+          "checks": [
+            {
+              "item": "Tổng độ dài < 50 từ.",
+              "pass": true,
+              "evidence": "Chú ý: Cà phê nóng hổi đang chờ bạn!\nQuan tâm: Giao tận nơi, giữ trọn hương vị đậm đà.\nKhao khát: Chỉ vài phút, ly cà phê yêu thích đến ngay.\nHành động: Đặt ngay để nhận ưu đãi giao miễn phí!",
+              "reason": "Full ad is under 50 words."
+            },
+            {
+              "item": "Thỏa mãn đúng 4 câu tương ứng 4 giai đoạn AIDA.",
+              "pass": true,
+              "evidence": "Chú ý: Cà phê nóng hổi đang chờ bạn!\nQuan tâm: Giao tận nơi, giữ trọn hương vị đậm đà.\nKhao khát: Chỉ vài phút, ly cà phê yêu thích đến ngay.\nHành động: Đặt ngay để nhận ưu đãi giao miễn phí!",
+              "reason": "Each sentence content matches Attention, Interest, Desire, Action."
+            },
+            {
+              "item": "Thể hiện rõ thông điệp tiếp thị dịch vụ giao cà phê tận nơi.",
+              "pass": true,
+              "evidence": "Giao tận nơi, giữ trọn hương vị đậm đà.\nKhao khát: Chỉ vài phút, ly cà phê yêu thích đến ngay.\nHành động: Đặt ngay để nhận ưu đãi giao miễn phí!",
+              "reason": "Mentions delivery, product benefit, and ordering action."
+            }
+          ]
+        },
+        "test_5_email": {
+          "strict_pass": true,
+          "passed_checks": 4,
+          "total_checks": 4,
+          "checks": [
+            {
+              "item": "Có đầy đủ Tiêu đề và Lời chào theo chuẩn email.",
+              "pass": true,
+              "evidence": "Tiêu đề: Từ chối lời mời họp lúc 15h hôm nay\n\nChào anh/chị,",
+              "reason": "Contains email subject line and salutation."
+            },
+            {
+              "item": "Phần thân bài đúng chính xác 2 câu.",
+              "pass": true,
+              "evidence": "Tôi rất xin lỗi nhưng không thể tham dự cuộc họp lúc 15h chiều nay do trùng lịch.\nAnh/chị có thể sắp xếp lại vào 10h sáng mai hoặc 14h chiều mai không?",
+              "reason": "Body has exactly two sentences."
+            },
+            {
+              "item": "Câu 1 chứa lời xin lỗi + lý do; Câu 2 đề xuất thời gian mới.",
+              "pass": true,
+              "evidence": "Tôi rất xin lỗi nhưng không thể tham dự cuộc họp lúc 15h chiều nay do trùng lịch.\nAnh/chị có thể sắp xếp lại vào 10h sáng mai hoặc 14h chiều mai không?",
+              "reason": "First sentence apologizes with reason; second proposes new times."
+            },
+            {
+              "item": "Văn phong lịch sự, trang trọng.",
+              "pass": true,
+              "evidence": "Chào anh/chị,\n\nTôi rất xin lỗi nhưng không thể tham dự cuộc họp lúc 15h chiều nay do trùng lịch.\nAnh/chị có thể sắp xếp lại vào 10h sáng mai hoặc 14h chiều mai không?",
+              "reason": "Polite address, formal apology, and courteous request."
+            }
+          ]
+        },
+        "test_6_rewrite": {
+          "strict_pass": true,
+          "passed_checks": 3,
+          "total_checks": 3,
+          "checks": [
+            {
+              "item": "Đầu ra chỉ gồm đúng 1 câu duy nhất.",
+              "pass": true,
+              "evidence": "Kính đề nghị đơn vị vận hành khẩn trương khắc phục tình trạng lỗi liên tục của hệ thống ứng dụng này.",
+              "reason": "Output is exactly one sentence."
+            },
+            {
+              "item": "Có xuất hiện từ 'hệ thống'.",
+              "pass": true,
+              "evidence": "hệ thống",
+              "reason": "Contains required keyword."
+            },
+            {
+              "item": "Chuyển đổi thành công sang văn phong công sở/hành chính chuẩn mực.",
+              "pass": true,
+              "evidence": "Kính đề nghị đơn vị vận hành khẩn trương khắc phục tình trạng lỗi liên tục của hệ thống ứng dụng này.",
+              "reason": "Formal administrative wording with formal request markers."
+            }
+          ]
+        }
+      }
+    },
+    {
+      "run_id": "run_20261010_150515_58c4af",
+      "model": "deepseek-v4-pro",
+      "provider": "deepseek",
+      "timestamp": "2026-10-10T15:05:15.253669+00:00",
+      "strict_pass_count": 5,
+      "nuance_score": 95.0,
+      "elapsed_seconds": 137.22,
+      "cost_usd": 0.050761,
+      "prompt_tokens": 1009,
+      "completion_tokens": 12482,
+      "reasoning_tokens": 11920,
+      "judge": {
+        "model": "deepseek-v4-pro",
+        "protocol": "evidence-quoted-v1"
+      },
+      "source_run": "runs/run_20261010_150515_58c4af.json",
+      "source_scores": "scores/strict_scores_run_20261010_150515_58c4af.json",
+      "test_scores": {
+        "test_1_poetry": {
+          "strict_pass": true,
+          "passed_checks": 4,
+          "total_checks": 4,
+          "checks": [
+            {
+              "item": "Đúng 4 câu thơ.",
+              "pass": true,
+              "evidence": "Sáng nay phố nhỏ nắng lung linh,\nHương cà phê tỏa giữa bình minh.\nNhấp ngụm đắng nồng tan giấc mộng,\nTách thơm thanh thoát tỏa tâm tình.",
+              "reason": "Đếm thấy bốn câu thơ tách biệt."
+            },
+            {
+              "item": "Mỗi câu thơ có đúng 7 chữ.",
+              "pass": true,
+              "evidence": "Sáng nay phố nhỏ nắng lung linh,\nHương cà phê tỏa giữa bình minh.\nNhấp ngụm đắng nồng tan giấc mộng,\nTách thơm thanh thoát tỏa tâm tình.",
+              "reason": "Mỗi dòng đều gồm bảy từ."
+            },
+            {
+              "item": "Nội dung bám sát chủ đề 'cà phê sáng'.",
+              "pass": true,
+              "evidence": "Hương cà phê tỏa giữa bình minh.",
+              "reason": "Câu thơ nhắc cà phê và bình minh."
+            },
+            {
+              "item": "100% số từ ở câu thứ 4 đều bắt đầu bằng chữ cái T.",
+              "pass": true,
+              "evidence": "Tách thơm thanh thoát tỏa tâm tình.",
+              "reason": "Tất cả các từ trong câu 4 đều bắt đầu T."
+            }
+          ]
+        },
+        "test_2_prose": {
+          "strict_pass": true,
+          "passed_checks": 3,
+          "total_checks": 3,
+          "checks": [
+            {
+              "item": "Tổng số câu trong đoạn văn <= 3 câu.",
+              "pass": true,
+              "evidence": "Lần đầu được cất cánh, tôi thấy bụng nhộn nhạo khi cỗ máy tăng tốc rồi chao nhẹ lúc rời đường băng. Áp suất khiến tai ù đi, còn mọi vật bên dưới cứ nhỏ dần qua khung cửa sổ. Người tôi cứ lâng lâng, tay bám chặt thành ghế vì chưa quen với cảm giác lơ lửng giữa không trung.",
+              "reason": "Đoạn văn có ba câu, đạt yêu cầu."
+            },
+            {
+              "item": "Không chứa bất kỳ từ nào trong danh sách bị cấm (máy bay, mây, bầu trời, sợ, thích).",
+              "pass": true,
+              "evidence": "Lần đầu được cất cánh, tôi thấy bụng nhộn nhạo khi cỗ máy tăng tốc rồi chao nhẹ lúc rời đường băng. Áp suất khiến tai ù đi, còn mọi vật bên dưới cứ nhỏ dần qua khung cửa sổ. Người tôi cứ lâng lâng, tay bám chặt thành ghế vì chưa quen với cảm giác lơ lửng giữa không trung.",
+              "reason": "Không xuất hiện từ cấm nào."
+            },
+            {
+              "item": "Diễn tả đúng cảm xúc và không gian của trải nghiệm bay.",
+              "pass": true,
+              "evidence": "Lần đầu được cất cánh, tôi thấy bụng nhộn nhạo khi cỗ máy tăng tốc rồi chao nhẹ lúc rời đường băng. Áp suất khiến tai ù đi, còn mọi vật bên dưới cứ nhỏ dần qua khung cửa sổ. Người tôi cứ lâng lâng, tay bám chặt thành ghế vì chưa quen với cảm giác lơ lửng giữa không trung.",
+              "reason": "Miêu tả cảm giác bụng nhộn nhạo, tai ù, lâng lâng."
+            }
+          ]
+        },
+        "test_3_persona": {
+          "strict_pass": false,
+          "passed_checks": 2,
+          "total_checks": 3,
+          "checks": [
+            {
+              "item": "Tổng số từ <= 15 từ.",
+              "pass": true,
+              "evidence": "Dạ chúng tôi xin lỗi, đang kiểm tra. Vui lòng chờ chút ạ.",
+              "reason": "Câu trả lời dài mười ba từ."
+            },
+            {
+              "item": "Đúng vai trò nhân viên hỗ trợ khách hàng (thái độ lịch sự, chuyên nghiệp).",
+              "pass": true,
+              "evidence": "Dạ chúng tôi xin lỗi, đang kiểm tra. Vui lòng chờ chút ạ.",
+              "reason": "Có từ lịch sự Dạ, xin lỗi, Vui lòng, ạ."
+            },
+            {
+              "item": "Trả lời đúng trọng tâm câu hỏi của khách hàng.",
+              "pass": false,
+              "evidence": "",
+              "reason": "Không nêu lý do thực tế; chỉ bảo đang kiểm tra."
+            }
+          ]
+        },
+        "test_4_marketing": {
+          "strict_pass": true,
+          "passed_checks": 3,
+          "total_checks": 3,
+          "checks": [
+            {
+              "item": "Tổng độ dài < 50 từ.",
+              "pass": true,
+              "evidence": "Attention: Cà phê ngon giao tận nơi trong 15 phút?\nInterest: Hạt rang xay mộc, đậm vị nguyên bản mỗi sáng.\nDesire: Bạn sẽ bừng tỉnh, tràn đầy năng lượng cho công việc.\nAction: Gọi ngay 1900 1234 để được miễn phí giao hàng hôm nay.",
+              "reason": "Toàn văn dưới 50 từ theo công cụ."
+            },
+            {
+              "item": "Thỏa mãn đúng 4 câu tương ứng 4 giai đoạn AIDA.",
+              "pass": true,
+              "evidence": "Attention: Cà phê ngon giao tận nơi trong 15 phút?\nInterest: Hạt rang xay mộc, đậm vị nguyên bản mỗi sáng.\nDesire: Bạn sẽ bừng tỉnh, tràn đầy năng lượng cho công việc.\nAction: Gọi ngay 1900 1234 để được miễn phí giao hàng hôm nay.",
+              "reason": "Bốn câu lần lượt làm đúng AIDA."
+            },
+            {
+              "item": "Thể hiện rõ thông điệp tiếp thị dịch vụ giao cà phê tận nơi.",
+              "pass": true,
+              "evidence": "Cà phê ngon giao tận nơi trong 15 phút?",
+              "reason": "Nêu dịch vụ giao cà phê tận nơi."
+            }
+          ]
+        },
+        "test_5_email": {
+          "strict_pass": true,
+          "passed_checks": 4,
+          "total_checks": 4,
+          "checks": [
+            {
+              "item": "Có đầy đủ Tiêu đề và Lời chào theo chuẩn email.",
+              "pass": true,
+              "evidence": "Tiêu đề: Về việc từ chối tham dự cuộc họp 15h chiều nay\nLời chào: Kính gửi anh/chị,",
+              "reason": "Có Tiêu đề và Kính gửi."
+            },
+            {
+              "item": "Phần thân bài đúng chính xác 2 câu.",
+              "pass": true,
+              "evidence": "Nội dung: Tôi rất tiếc phải thông báo rằng tôi không thể tham dự cuộc họp lúc 15h chiều nay do bị trùng lịch với một cuộc họp quan trọng khác, thành thật xin lỗi anh/chị. Tôi xin đề xuất dời cuộc họp sang khung giờ 16h30 chiều nay hoặc 9h sáng mai, mong anh/chị xem xét và phản hồi giúp tôi.",
+              "reason": "Phần Nội dung có hai câu."
+            },
+            {
+              "item": "Câu 1 chứa lời xin lỗi + lý do; Câu 2 đề xuất thời gian mới.",
+              "pass": true,
+              "evidence": "Tôi rất tiếc phải thông báo rằng tôi không thể tham dự cuộc họp lúc 15h chiều nay do bị trùng lịch với một cuộc họp quan trọng khác, thành thật xin lỗi anh/chị. Tôi xin đề xuất dời cuộc họp sang khung giờ 16h30 chiều nay hoặc 9h sáng mai, mong anh/chị xem xét và phản hồi giúp tôi.",
+              "reason": "Câu đầu có lý do trùng lịch, xin lỗi; câu sau đề xuất thời gian."
+            },
+            {
+              "item": "Văn phong lịch sự, trang trọng.",
+              "pass": true,
+              "evidence": "Kính gửi anh/chị,\nNội dung: Tôi rất tiếc phải thông báo rằng tôi không thể tham dự cuộc họp lúc 15h chiều nay do bị trùng lịch với một cuộc họp quan trọng khác, thành thật xin lỗi anh/chị.",
+              "reason": "Dùng kính gửi, xin lỗi, đề xuất, mong anh/chị."
+            }
+          ]
+        },
+        "test_6_rewrite": {
+          "strict_pass": true,
+          "passed_checks": 3,
+          "total_checks": 3,
+          "checks": [
+            {
+              "item": "Đầu ra chỉ gồm đúng 1 câu duy nhất.",
+              "pass": true,
+              "evidence": "Kính đề nghị quý bộ phận kỹ thuật khẩn trương khắc phục sự cố của hệ thống ứng dụng này vì lỗi đang xảy ra liên tục.",
+              "reason": "Toàn bộ đầu ra là một câu."
+            },
+            {
+              "item": "Có xuất hiện từ 'hệ thống'.",
+              "pass": true,
+              "evidence": "hệ thống",
+              "reason": "Có từ hệ thống trong câu."
+            },
+            {
+              "item": "Chuyển đổi thành công sang văn phong công sở/hành chính chuẩn mực.",
+              "pass": true,
+              "evidence": "Kính đề nghị quý bộ phận kỹ thuật khẩn trương khắc phục sự cố của hệ thống ứng dụng này vì lỗi đang xảy ra liên tục.",
+              "reason": "Văn phong hành chính: Kính đề nghị quý bộ phận kỹ thuật."
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
