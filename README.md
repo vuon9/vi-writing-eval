@@ -5,7 +5,43 @@ A Vietnamese writing benchmark for language models, plus the leaderboard of resu
 Two things live here:
 
 - **`skills/vi-writing-eval/`** the skill. It runs six constraint-heavy Vietnamese writing tests, verifies the mechanical rules, and judges the output blind.
-- **`leaderboard.json`, `runs/`, `scores/`** the results. Every number in the tables below comes from a real run, with the raw completions kept as evidence.
+- **`leaderboard.json`, `runs/`, `scores/`, `reports/`** the results. Every number on the board comes from a real run, with the raw completions and judge verdicts kept as evidence.
+
+The board is one row per model, showing that model's latest run. The model name links to a full report with the prompts, the completions verbatim, and every judge verdict.
+
+<!-- LEADERBOARD:START -->
+
+## Leaderboard
+
+2 models, latest run each, judged blind against the 20-point rubric. The model name links to a full report with the prompts, the completions, and every judge verdict.
+
+| Rank | Model | Provider | Strict pass | Nuance | Latency | Cost | Judge | Protocol | Badges |
+|:--:|:--|:--|:--:|:--:|--:|--:|:--|:--|:--|
+| 1 | **[deepseek-flash](reports/deepseek-flash.md)** | deepseek | 6/6 | 100.0% | 29.2s | $0.0074 | deepseek-v4-pro | evidence-quoted-v1 | `[Quality Crown]`, `[Speed Demon]` |
+| 2 | **[deepseek-v4-pro](reports/deepseek-v4-pro.md)** | deepseek | 5/6 | 95.0% | 137.2s | $0.0508 | deepseek-v4-pro | evidence-quoted-v1 | none |
+
+## Per-test result
+
+| Model | test_1_poetry | test_2_prose | test_3_persona | test_4_marketing | test_5_email | test_6_rewrite |
+|:--|:--:|:--:|:--:|:--:|:--:|:--:|
+| **[deepseek-flash](reports/deepseek-flash.md)** | pass | pass | pass | pass | pass | pass |
+| **[deepseek-v4-pro](reports/deepseek-v4-pro.md)** | pass | pass | fail (2/3) | pass | pass | pass |
+
+## Failed checkpoints
+
+| Model | Test | Failed checkpoint | Judge reason |
+|:--|:--|:--|:--|
+| **[deepseek-v4-pro](reports/deepseek-v4-pro.md)** | test_3_persona | Trả lời đúng trọng tâm câu hỏi của khách hàng. | Không nêu lý do thực tế; chỉ bảo đang kiểm tra. |
+
+## Badge legend
+
+- `[Quality Crown]` highest Nuance score on the board.
+- `[Free Champion]` zero cost and Nuance at or above 70%.
+- `[Speed Demon]` lowest latency among runs at or above 70% Nuance.
+
+Scores are only comparable between rows that share a judge and protocol.
+
+<!-- LEADERBOARD:END -->
 
 ## What is measured
 
@@ -26,6 +62,16 @@ A model that misses one letter is not the same as a model that ignores the rules
 
 The judge model and protocol are recorded on every entry. A score is not comparable across different judges or different judging protocols.
 
+## Reports
+
+`reports/` holds one markdown report per model, generated from `leaderboard.json` plus the run file each entry points at:
+
+- the prompt and the completion verbatim, so the meter and line breaks survive
+- every checklist item with the judge's verdict, its reason, and the quote it relied on
+- the run's cost, latency, and token split, including hidden reasoning tokens
+
+A newer run for the same model replaces the report at the same path, so links stay valid. Git history keeps the text that was replaced. A report for a model that leaves the board is deleted, which keeps the directory a faithful view of the current board.
+
 ## Reproduce a run
 
 ```bash
@@ -37,7 +83,7 @@ python3 skills/vi-writing-eval/scripts/benchmark.py test \
   --out-dir runs
 ```
 
-Then judge the run blind, ingest the verdicts, and re-render the tables:
+Then judge the run blind, ingest the verdicts, and rebuild both views:
 
 ```bash
 python3 skills/vi-writing-eval/scripts/benchmark.py blind runs/run_example.json -o /tmp/blinded.json
@@ -46,10 +92,11 @@ python3 scripts/ingest.py \
   --scores scores/run_example.json \
   --judge-model <judge> \
   --judge-protocol evidence-quoted-v1
-python3 scripts/render.py
+python3 scripts/render.py    # README tables
+python3 scripts/reports.py   # per-model reports
 ```
 
-`scripts/render.py` only rewrites the region between the `LEADERBOARD` markers, so the prose in this file is safe to edit by hand. CI regenerates that region on every data change, and fails a pull request whose tables are stale.
+`scripts/render.py` only rewrites the region between the `LEADERBOARD` markers, so the prose in this file is safe to edit by hand. CI regenerates the tables and the reports on every data change, and fails a pull request whose tables or reports are stale.
 
 ## Scoring caveats
 
@@ -60,37 +107,3 @@ python3 scripts/render.py
 ## Author and license
 
 Author: [vuon9](https://github.com/vuon9). MIT licensed, see [LICENSE](LICENSE).
-
-<!-- LEADERBOARD:START -->
-
-## Leaderboard
-
-2 model runs, judged blind against the 20-point rubric.
-
-| Rank | Model | Provider | Strict pass | Nuance | Latency | Cost | Judge | Protocol | Badges |
-|:--:|:--|:--|:--:|:--:|--:|--:|:--|:--|:--|
-| 1 | **deepseek-flash** | deepseek | 6/6 | 100.0% | 29.2s | $0.0074 | deepseek-v4-pro | evidence-quoted-v1 | `[Quality Crown]`, `[Speed Demon]` |
-| 2 | **deepseek-v4-pro** | deepseek | 5/6 | 95.0% | 137.2s | $0.0508 | deepseek-v4-pro | evidence-quoted-v1 | none |
-
-## Per-test result
-
-| Model | test_1_poetry | test_2_prose | test_3_persona | test_4_marketing | test_5_email | test_6_rewrite |
-|:--|:--:|:--:|:--:|:--:|:--:|:--:|
-| **deepseek-flash** | pass | pass | pass | pass | pass | pass |
-| **deepseek-v4-pro** | pass | pass | fail (2/3) | pass | pass | pass |
-
-## Failed checkpoints
-
-| Model | Test | Failed checkpoint | Judge reason |
-|:--|:--|:--|:--|
-| **deepseek-v4-pro** | test_3_persona | Trả lời đúng trọng tâm câu hỏi của khách hàng. | Không nêu lý do thực tế; chỉ bảo đang kiểm tra. |
-
-## Badge legend
-
-- `[Quality Crown]` highest Nuance score on the board.
-- `[Free Champion]` zero cost and Nuance at or above 70%.
-- `[Speed Demon]` lowest latency among runs at or above 70% Nuance.
-
-Scores are only comparable between rows that share a judge and protocol.
-
-<!-- LEADERBOARD:END -->
