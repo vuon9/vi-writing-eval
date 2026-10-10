@@ -1,0 +1,46 @@
+name: skill-contract
+
+on:
+  push:
+    paths:
+      - skills/**
+      - scripts/check_skills.py
+  pull_request:
+    paths:
+      - skills/**
+      - scripts/check_skills.py
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    name: Skill frontmatter and docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check skill contracts
+        run: python3 scripts/check_skills.py
+      - name: Verify the skill scripts compile
+        run: python3 -m compileall -q skills/vi-writing-eval/scripts
+      - name: Verify the canonical suite is valid JSON and covers all six tests
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, sys
+          p = pathlib.Path("skills/vi-writing-eval/references/canonical_suite.json")
+          suite = json.loads(p.read_text(encoding="utf-8"))
+          if len(suite) != 6:
+              sys.exit(f"expected 6 tests, found {len(suite)}")
+          for t in suite:
+              missing = [k for k in ("id", "title", "prompt", "checklist") if not t.get(k)]
+              if missing:
+                  sys.exit(f"{t.get('id', '?')} missing {missing}")
+          total = sum(len(t["checklist"]) for t in suite)
+          if total != 20:
+              sys.exit(f"expected 20 checkpoints, found {total}")
+          print(f"suite ok: {len(suite)} tests, {total} checkpoints")
+          PY

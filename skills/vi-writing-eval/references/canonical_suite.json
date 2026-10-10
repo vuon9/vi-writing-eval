@@ -1,0 +1,70 @@
+[
+  {
+    "id": "test_1_poetry",
+    "title": "Test Khả năng Làm thơ (Linh hoạt + Kiểm soát định dạng)",
+    "objective": "Kiểm tra khả năng gieo vần, đếm số chữ/câu và tuân thủ ràng buộc ký tự đầu câu đặc biệt.",
+    "prompt": "Hãy viết một bài thơ 4 câu (thể 7 chữ) về chủ đề 'cà phê sáng'.\nRàng buộc: Tất cả các từ trong câu thứ 4 đều phải bắt đầu bằng chữ cái T.",
+    "checklist": [
+      "Đúng 4 câu thơ.",
+      "Mỗi câu thơ có đúng 7 chữ.",
+      "Nội dung bám sát chủ đề 'cà phê sáng'.",
+      "100% số từ ở câu thứ 4 đều bắt đầu bằng chữ cái T."
+    ]
+  },
+  {
+    "id": "test_2_prose",
+    "title": "Test Khả năng Viết văn (Tóm tắt + Giới hạn thông tin)",
+    "objective": "Đánh giá khả năng miêu tả cảm xúc ngắn gọn và việc tuân thủ danh sách từ cấm (Negative Constraints).",
+    "prompt": "Hãy viết một đoạn văn ngắn (tối đa 3 câu) miêu tả cảm giác của một người lần đầu đi máy bay.\nRàng buộc: Không được sử dụng các từ: máy bay, mây, bầu trời, sợ, thích.",
+    "checklist": [
+      "Tổng số câu trong đoạn văn <= 3 câu.",
+      "Không chứa bất kỳ từ nào trong danh sách bị cấm (máy bay, mây, bầu trời, sợ, thích).",
+      "Diễn tả đúng cảm xúc và không gian của trải nghiệm bay."
+    ]
+  },
+  {
+    "id": "test_3_persona",
+    "title": "Test Khả năng Nhập vai / Hội thoại (Tuân thủ Persona & Quy tắc logic)",
+    "objective": "Kiểm tra việc duy trì tính cách nhân vật (Persona) kết hợp với giới hạn độ dài khắt khe.",
+    "prompt": "Bạn là một nhân viên hỗ trợ khách hàng cực kỳ lịch sự nhưng chỉ được trả lời bằng tối đa 15 từ.\nKhách hàng hỏi: 'Tại sao đơn hàng của tôi chưa giao?'. Hãy viết câu phản hồi.",
+    "checklist": [
+      "Tổng số từ <= 15 từ.",
+      "Đúng vai trò nhân viên hỗ trợ khách hàng (thái độ lịch sự, chuyên nghiệp).",
+      "Trả lời đúng trọng tâm câu hỏi của khách hàng."
+    ]
+  },
+  {
+    "id": "test_4_marketing",
+    "title": "Test Khả năng Sáng tạo Marketing (Copywriting + Cấu trúc định dạng)",
+    "objective": "Kiểm tra khả năng viết quảng cáo đúng cấu trúc chuyên ngành (AIDA) và kiểm soát số từ.",
+    "prompt": "Hãy viết 1 đoạn quảng cáo ngắn (dưới 50 từ) giới thiệu dịch vụ giao cà phê tận nơi.\nRàng buộc: Phải viết theo cấu trúc AIDA (Attention - Interest - Desire - Action) và mỗi phần chỉ được gói gọn trong đúng 1 câu.",
+    "checklist": [
+      "Tổng độ dài < 50 từ.",
+      "Thỏa mãn đúng 4 câu tương ứng 4 giai đoạn AIDA.",
+      "Thể hiện rõ thông điệp tiếp thị dịch vụ giao cà phê tận nơi."
+    ]
+  },
+  {
+    "id": "test_5_email",
+    "title": "Test Khả năng Viết Email Công việc (Thần thái & Quy chuẩn giao tiếp)",
+    "objective": "Đánh giá khả năng bố cục văn bản hành chính/công sở chuẩn mực theo đúng yêu cầu số lượng câu.",
+    "prompt": "Hãy viết một email ngắn từ chối lời mời họp vào 15h chiều nay do trùng lịch.\nRàng buộc: Email gồm đúng 3 phần: Tiêu đề, Lời chào, và 2 câu nội dung (câu 1: lý do từ chối + xin lỗi; câu 2: đề xuất khung giờ mới).",
+    "checklist": [
+      "Có đầy đủ Tiêu đề và Lời chào theo chuẩn email.",
+      "Phần thân bài đúng chính xác 2 câu.",
+      "Câu 1 chứa lời xin lỗi + lý do; Câu 2 đề xuất thời gian mới.",
+      "Văn phong lịch sự, trang trọng."
+    ]
+  },
+  {
+    "id": "test_6_rewrite",
+    "title": "Test Khả năng Dịch thuật / Chuyển đổi văn phong (Rewrite / Tone & Style)",
+    "objective": "Đánh giá khả năng tinh chỉnh giọng văn (Tone of Voice) và chèn từ khóa bắt buộc.",
+    "prompt": "Hãy chuyển câu sau đây sang văn phong trang trọng/hành chính: 'Cái ứng dụng này bị lỗi liên tục, làm ơn sửa nhanh lên giùm cái!'.\nRàng buộc: Câu phản hồi chỉ được dài đúng 1 câu và chứa từ 'hệ thống'.",
+    "checklist": [
+      "Đầu ra chỉ gồm đúng 1 câu duy nhất.",
+      "Có xuất hiện từ 'hệ thống'.",
+      "Chuyển đổi thành công sang văn phong công sở/hành chính chuẩn mực."
+    ]
+  }
+]
