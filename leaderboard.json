@@ -189,7 +189,7 @@
       "provider": "deepseek",
       "timestamp": "2026-10-10T15:05:15.253669+00:00",
       "strict_pass_count": 5,
-      "nuance_score": 95.0,
+      "nuance_score": 88.0,
       "elapsed_seconds": 137.22,
       "cost_usd": 0.050761,
       "prompt_tokens": 1009,
